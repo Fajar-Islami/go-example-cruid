@@ -1,0 +1,18 @@
+services:
+  mysql_fiber_gorm_example:
+    image: mysql:8.0.30
+    container_name: mysql_fiber_gorm_example
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_fiber_gorm_example:/var/lib/mysql
+    env_file:
+      - .env
+    environment:
+       MYSQL_ROOT_PASSWORD : ${mysql_password}
+       MYSQL_PASSWORD : ${mysql_password}
+       MYSQL_USER : ${mysql_username}
+       MYSQL_DATABASE : ${mysql_dbname}
+
+volumes:
+  mysql_fiber_gorm_example: {}
