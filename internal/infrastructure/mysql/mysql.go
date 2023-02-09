@@ -43,6 +43,8 @@ func DatabaseInit(v *viper.Viper) *gorm.DB {
 		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprintf("Cannot conenct to database : %s", err.Error()))
 	}
 
+	// TODO POOLING CONNECTION
+
 	helper.Logger(currentfilepath, helper.LoggerLevelInfo, "⇨ MySQL status is connected")
 	RunMigration(db)
 

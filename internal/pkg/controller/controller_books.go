@@ -1,9 +1,9 @@
-package bookscontroller
+package controller
 
 import (
 	"log"
-	booksdto "tugas_akhir_example/internal/pkg/books/dto"
-	booksusecase "tugas_akhir_example/internal/pkg/books/usecase"
+	booksdto "tugas_akhir_example/internal/pkg/dto"
+	booksusecase "tugas_akhir_example/internal/pkg/usecase"
 
 	"github.com/gofiber/fiber/v2"
 )

@@ -1,7 +1,7 @@
 package http
 
 import (
-	"tugas_akhir_example/internal/pkg/books"
+	route "tugas_akhir_example/internal/server/http/handler"
 
 	"tugas_akhir_example/internal/infrastructure/container"
 
@@ -11,7 +11,5 @@ import (
 func HTTPRouteInit(r *fiber.App, containerConf *container.Container) {
 	api := r.Group("/api/v1") // /api
 
-	booksAPI := api.Group("/books")
-	books.BooksRoute(booksAPI, containerConf)
-
+	route.BooksRoute(api, containerConf)
 }

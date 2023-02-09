@@ -1,4 +1,4 @@
-package booksusecase
+package usecase
 
 import (
 	"context"
@@ -7,14 +7,14 @@ import (
 	"log"
 	"tugas_akhir_example/internal/daos"
 	"tugas_akhir_example/internal/helper"
-	booksdto "tugas_akhir_example/internal/pkg/books/dto"
-	booksrepository "tugas_akhir_example/internal/pkg/books/repository"
+	booksdto "tugas_akhir_example/internal/pkg/dto"
+	booksrepository "tugas_akhir_example/internal/pkg/repository"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"
 )
 
-var currentfilepath = "internal/pkg/books/usecase/usecase.go"
+var currentfilepath = "internal/pkg/usecase/usecase.go"
 
 type BooksUseCase interface {
 	GetAllBooks(ctx context.Context, limit, page int) (res []booksdto.BooksResp, err *helper.ErrorStruct)

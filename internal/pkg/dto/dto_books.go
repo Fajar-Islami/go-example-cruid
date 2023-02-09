@@ -1,4 +1,4 @@
-package booksdto
+package dto
 
 type BooksFilter struct {
 	Title string `query:"title"`

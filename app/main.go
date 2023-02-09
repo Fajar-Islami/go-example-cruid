@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"tugas_akhir_example/internal/helper"
 	"tugas_akhir_example/internal/infrastructure/container"
+	"tugas_akhir_example/internal/infrastructure/mysql"
 
 	rest "tugas_akhir_example/internal/server/http"
 
@@ -16,6 +17,8 @@ func main() {
 	logrus.SetFormatter(&logrus.JSONFormatter{})
 
 	containerConf := container.InitContainer()
+	defer mysql.CloseDatabaseConnection(containerConf.Mysqldb)
+
 	app := fiber.New()
 	app.Use(logger.New())
 
