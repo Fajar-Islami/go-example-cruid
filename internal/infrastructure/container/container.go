@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"tugas_akhir_example/internal/helper"
 	"tugas_akhir_example/internal/infrastructure/mysql"
 
@@ -31,11 +32,20 @@ type (
 	}
 )
 
+func loadEnv() {
+	projectDirName := "tugas_akhir_example"
+	projectName := regexp.MustCompile(`^(.*` + projectDirName + `)`)
+	currentWorkDirectory, _ := os.Getwd()
+	rootPath := projectName.Find([]byte(currentWorkDirectory))
+
+	v.SetConfigFile(string(rootPath) + `/.env`)
+}
+
 func init() {
 	v = viper.New()
 
 	v.AutomaticEnv()
-	v.SetConfigFile(".env")
+	loadEnv()
 
 	path, err := os.Executable()
 	if err != nil {

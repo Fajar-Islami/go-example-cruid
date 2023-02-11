@@ -37,7 +37,12 @@ func (uc *BooksControllerImpl) GetAllBooks(ctx *fiber.Ctx) error {
 		})
 	}
 
-	res, err := uc.booksusecase.GetAllBooks(c, filter.Limit, filter.Page)
+	res, err := uc.booksusecase.GetAllBooks(c, booksdto.BooksFilter{
+		Title: filter.Title,
+		Limit: filter.Limit,
+		Page:  filter.Page,
+	})
+
 	if err != nil {
 		return ctx.Status(err.Code).JSON(fiber.Map{
 			"error": err.Err.Error(),

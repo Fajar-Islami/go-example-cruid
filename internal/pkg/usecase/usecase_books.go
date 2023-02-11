@@ -17,7 +17,7 @@ import (
 var currentfilepath = "internal/pkg/usecase/usecase.go"
 
 type BooksUseCase interface {
-	GetAllBooks(ctx context.Context, limit, page int) (res []booksdto.BooksResp, err *helper.ErrorStruct)
+	GetAllBooks(ctx context.Context, params booksdto.BooksFilter) (res []booksdto.BooksResp, err *helper.ErrorStruct)
 	GetBooksByID(ctx context.Context, booksid string) (res booksdto.BooksResp, err *helper.ErrorStruct)
 	CreateBooks(ctx context.Context, data booksdto.BooksReqCreate) (res uint, err *helper.ErrorStruct)
 	UpdateBooksByID(ctx context.Context, booksid string, data booksdto.BooksReqUpdate) (res string, err *helper.ErrorStruct)
@@ -35,8 +35,22 @@ func NewBooksUseCase(booksrepository booksrepository.BooksRepository) BooksUseCa
 
 }
 
-func (alc *BooksUseCaseImpl) GetAllBooks(ctx context.Context, limit, page int) (res []booksdto.BooksResp, err *helper.ErrorStruct) {
-	resRepo, errRepo := alc.booksrepository.GetAllBooks(ctx, limit, page)
+func (alc *BooksUseCaseImpl) GetAllBooks(ctx context.Context, params booksdto.BooksFilter) (res []booksdto.BooksResp, err *helper.ErrorStruct) {
+	if params.Limit < 1 {
+		params.Limit = 10
+	}
+
+	if params.Page < 1 {
+		params.Page = 0
+	} else {
+		params.Page = (params.Page - 1) * params.Limit
+	}
+
+	resRepo, errRepo := alc.booksrepository.GetAllBooks(ctx, daos.FilterBooks{
+		Limit:  params.Limit,
+		Offset: params.Page,
+		Title:  params.Title,
+	})
 	if errors.Is(errRepo, gorm.ErrRecordNotFound) {
 		return res, &helper.ErrorStruct{
 			Code: fiber.StatusNotFound,

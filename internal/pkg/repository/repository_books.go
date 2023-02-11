@@ -8,7 +8,7 @@ import (
 )
 
 type BooksRepository interface {
-	GetAllBooks(ctx context.Context, limit, page int) (res []daos.Book, err error)
+	GetAllBooks(ctx context.Context, params daos.FilterBooks) (res []daos.Book, err error)
 	GetBooksByID(ctx context.Context, booksid string) (res daos.Book, err error)
 	CreateBooks(ctx context.Context, data daos.Book) (res uint, err error)
 	UpdateBooksByID(ctx context.Context, booksid string, data daos.Book) (res string, err error)
@@ -24,10 +24,14 @@ func NewBooksRepository(db *gorm.DB) BooksRepository {
 		db: db,
 	}
 }
-func (alr *BooksRepositoryImpl) GetAllBooks(ctx context.Context, limit, page int) (res []daos.Book, err error) {
+func (alr *BooksRepositoryImpl) GetAllBooks(ctx context.Context, params daos.FilterBooks) (res []daos.Book, err error) {
 	db := alr.db
 
-	if err := db.Find(&res).WithContext(ctx).Limit(limit).Offset(page).Error; err != nil {
+	if params.Title != "" {
+		db = db.Where("title like ?", "%"+params.Title)
+	}
+
+	if err := db.Debug().WithContext(ctx).Limit(params.Limit).Offset(params.Offset).Find(&res).Error; err != nil {
 		return res, err
 	}
 	return res, nil
