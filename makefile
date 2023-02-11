@@ -33,3 +33,20 @@ down:
 
 logs:
 	docker compose logs -f
+
+build:
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o  ./dist/example ./app/main.go
+
+dockerbuild:
+	docker build --rm -t example_fiber .
+	docker image prune --filter label=stage=dockerbuilder -f
+
+dockerun:
+	docker run --name example_fiber  -p 8080:8080 example_fiber 
+
+dockerrm:
+	docker rm example_fiber -f
+	docker rmi example_fiber
+
+dockeenter:
+	docker exec -it example_fiber bash
