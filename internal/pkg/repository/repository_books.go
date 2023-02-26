@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"fmt"
 	"tugas_akhir_example/internal/daos"
 
 	"gorm.io/gorm"
@@ -27,9 +28,19 @@ func NewBooksRepository(db *gorm.DB) BooksRepository {
 func (alr *BooksRepositoryImpl) GetAllBooks(ctx context.Context, params daos.FilterBooks) (res []daos.Book, err error) {
 	db := alr.db
 
-	if params.Title != "" {
-		db = db.Where("title like ?", "%"+params.Title)
+	filter := map[string][]any{
+		"title like ? or description like ? or author like ?": []any{fmt.Sprint("%" + params.Title), "%ab ", "%ab"},
 	}
+
+	// if params.Title != "" {
+	// 	db = db.Where("title like ?", "%"+params.Title)
+	// }
+
+	for key, val := range filter {
+		db = db.Where(key, val...)
+	}
+
+	// db = db.Where(map[string]interface{}{"created_at BETWEEN ? AND ?": []string{"2000-01-01 00:00:00", "2000-01-01 00:00:00"}})
 
 	if err := db.Debug().WithContext(ctx).Limit(params.Limit).Offset(params.Offset).Find(&res).Error; err != nil {
 		return res, err

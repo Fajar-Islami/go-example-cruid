@@ -1,0 +1,3301 @@
+{
+	"info": {
+		"_postman_id": "57b87a44-299f-4853-85e6-ac989af4af8d",
+		"name": "Rakamin Evermos Virtual Internship",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12114597"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get All Category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{local}}/category",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{local}}/category",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:36:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "135"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"nama_category\": \"BHASA\"\n        },\n        {\n            \"id\": 2,\n            \"nama_category\": \"BAJU\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Category By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/category/3",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"category",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Category By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/category/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"category",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:36:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"nama_category\": \"BHASA\"\n    }\n}"
+						},
+						{
+							"name": "Get Category By ID Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/category/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"category",
+										"3"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:36:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to GET data\",\n    \"errors\": [\n        \"No Data Category\"\n    ],\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Post Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_category\":\"hapus\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/category",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post Category",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama_category\":\"BHASA\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/category",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:33:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to POST data\",\n    \"errors\": [\n        \"Unauthorized\"\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "Post Category",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama_category\":\"BHASA\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/category",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:35:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to POST data\",\n    \"errors\": null,\n    \"data\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Category By ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_category\":\"baju update\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/category/:id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Category By ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama_category\":\"baju update\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/category/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"category",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:36:44 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/category/:id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"category",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Product By ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/category/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"category",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:37:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": \"\"\n}"
+						},
+						{
+							"name": "Delete Product By ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/category/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"category",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:37:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to GET data\",\n    \"errors\": [\n        \"record not found\"\n    ],\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"console.log(jsonData.data.token)",
+									"// postman.setCollectionVariable(\"token\", jsonData.data.token);",
+									"pm.collectionVariables.set('token', jsonData.data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"no_telp\":\"08961231235\",\n    \"kata_sandi\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/login",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"no_telp\":\"0896123123\",\n    \"kata_sandi\":\"123456s\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/auth/login",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 08:14:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "103"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to POST data\",\n    \"errors\": [\n        \"No Telp atau kata sandi salah\"\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"no_telp\":\"08961231235\",\n    \"kata_sandi\":\"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/auth/login",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 10:36:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "485"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to POST data\",\n    \"errors\": null,\n    \"data\": {\n        \"nama\": \"ttes fajar\",\n        \"no_telp\": \"ttes fajar\",\n        \"tanggal_Lahir\": \"02/01/2006\",\n        \"tentang\": \"ttes fajar\",\n        \"pekerjaan\": \"ttes fajar\",\n        \"email\": \"ttes fajar\",\n        \"id_provinsi\": {\n            \"id\": \"11\",\n            \"name\": \"ACEH\"\n        },\n        \"id_kota\": {\n            \"id\": \"1101\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN SIMEULUE\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlczV0QG1haWwuY29tIiwiZXhwIjoxNjcwMjM2NTYxLCJpZCI6IjEifQ.EakePD1r034nUJmAkZdNMjDf5hIPNbpu1JUyTTCwVbs\"\n    }\n}"
+						},
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"no_telp\":\"08961231235\",\n    \"kata_sandi\":\"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/auth/login",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 10:36:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "485"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to POST data\",\n    \"errors\": null,\n    \"data\": {\n        \"nama\": \"ttes fajar\",\n        \"no_telp\": \"ttes fajar\",\n        \"tanggal_Lahir\": \"02/01/2006\",\n        \"tentang\": \"ttes fajar\",\n        \"pekerjaan\": \"ttes fajar\",\n        \"email\": \"ttes fajar\",\n        \"id_provinsi\": {\n            \"id\": \"11\",\n            \"name\": \"ACEH\"\n        },\n        \"id_kota\": {\n            \"id\": \"1101\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN SIMEULUE\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlczV0QG1haWwuY29tIiwiZXhwIjoxNjcwMjM2NTYxLCJpZCI6IjEifQ.EakePD1r034nUJmAkZdNMjDf5hIPNbpu1JUyTTCwVbs\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"test fajar\",\n    \"kata_sandi\": \"123456\",\n    \"no_telp\": \"0896123123\",\n    \"tanggal_Lahir\": \"02/01/2006\",\n    \"pekerjaan\": \"developer\",\n    \"email\":\"testfajar@mail.com\",\n    \"id_provinsi\":\"11\",\n    \"id_kota\":\"1101\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/register",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama\": \"test2\",\n    \"kata_sandi\": \"123456\",\n    \"no_telp\": \"0896123122\",\n    \"tanggal_Lahir\": \"02/01/2006\",\n    \"pekerjaan\": \"developer\",\n    \"email\":\"test2@mail.com\",\n    \"id_provinsi\":\"11\",\n    \"id_kota\":\"1101\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/auth/register",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 29 Nov 2022 16:27:45 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "140"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to POST data\",\n    \"errors\": [\n        \"Error 1062: Duplicate entry 'test2@mail.com' for key 'users.email'\"\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama\": \"test3\",\n    \"kata_sandi\": \"123456\",\n    \"no_telp\": \"0896123123\",\n    \"tanggal_Lahir\": \"02/01/2006\",\n    \"pekerjaan\": \"developer\",\n    \"email\":\"tes3t@mail.com\",\n    \"id_provinsi\":\"11\",\n    \"id_kota\":\"1101\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/auth/register",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 30 Nov 2022 06:38:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to POST data\",\n    \"errors\": null,\n    \"data\": \"Register Succeed\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Alamat Kirim",
+					"item": [
+						{
+							"name": "Get My Alamat",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/user/alamat",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"user",
+										"alamat"
+									],
+									"query": [
+										{
+											"key": "judul_alamat",
+											"value": "f",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get My Alamat",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{local}}/user/alamat",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"user",
+												"alamat"
+											],
+											"query": [
+												{
+													"key": "judul_alamat",
+													"value": "f",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 03 Dec 2022 04:46:24 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "236"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": [\n        {\n            \"id\": 4,\n            \"judul_alamat\": \"Imeldashire\",\n            \"nama_penerima\": \"Johanna Medhurst\",\n            \"no_telp\": \"Johanna Medhurst\",\n            \"detail_alamat\": \"Gaylord Pines, 500 Bernhard Camp, Rennermouth\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Alamat By ID",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/user/alamat/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"user",
+										"alamat",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Alamat By ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "token",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{local}}/user/alamat/:id",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"user",
+												"alamat",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "4"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 03 Dec 2022 04:46:38 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "234"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 4,\n        \"judul_alamat\": \"Imeldashire\",\n        \"nama_penerima\": \"Johanna Medhurst\",\n        \"no_telp\": \"Johanna Medhurst\",\n        \"detail_alamat\": \"Gaylord Pines, 500 Bernhard Camp, Rennermouth\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Post Alamat",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"judul_alamat\":\"{{$randomCity}}\",\n    \"nama_penerima\":\"{{$randomFullName}}\",\n    \"no_telp\":\"{{$randomPhoneNumber}}\",\n    \"detail_alamat\":\"{{$randomStreetName}}, {{$randomStreetAddress}}, {{$randomCity}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/user/alamat",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"user",
+										"alamat"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Post Alamat",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "token",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"judul_alamat\":\"{{$randomCity}}\",\n    \"nama_penerima\":\"{{$randomFullName}}\",\n    \"no_telp\":\"{{$randomPhoneNumber}}\",\n    \"detail_alamat\":\"{{$randomStreetName}}, {{$randomStreetAddress}}, {{$randomCity}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/user/alamat",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"user",
+												"alamat"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 03 Dec 2022 08:14:53 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "71"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to POST data\",\n    \"errors\": null,\n    \"data\": 1\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Alamat By ID",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama_penerima\":\"{{$randomFullName}}\",\n    \"no_telp\":\"{{$randomPhoneNumber}}\",\n    \"detail_alamat\":\"{{$randomStreetName}}, {{$randomStreetAddress}}, {{$randomCity}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/user/alamat/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"user",
+										"alamat",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update Alamat By ID error",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "token",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nama_penerima\":\"{{$randomFullName}}\",\n    \"no_telp\":\"{{$randomPhoneNumber}}\",\n    \"detail_alamat\":\"{{$randomStreetName}}, {{$randomStreetAddress}}, {{$randomCity}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/user/alamat/:id",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"user",
+												"alamat",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 03 Dec 2022 08:15:32 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "89"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": false,\n    \"message\": \"Failed to GET data\",\n    \"errors\": [\n        \"record not found\"\n    ],\n    \"data\": null\n}"
+								},
+								{
+									"name": "Update Alamat By ID",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "token",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"nama_penerima\":\"{{$randomFullName}}\",\n    \"no_telp\":\"{{$randomPhoneNumber}}\",\n    \"detail_alamat\":\"{{$randomStreetName}}, {{$randomStreetAddress}}, {{$randomCity}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/user/alamat/:id",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"user",
+												"alamat",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 03 Dec 2022 08:15:39 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "71"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": \"\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Alamat By ID",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/user/alamat/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"user",
+										"alamat",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete Alamat By ID",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "token",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{local}}/user/alamat/:id",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"user",
+												"alamat",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 03 Dec 2022 08:15:13 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "71"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": \"\"\n}"
+								},
+								{
+									"name": "Delete Alamat By ID Error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "token",
+												"value": "{{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{local}}/user/alamat/:id",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"user",
+												"alamat",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sat, 03 Dec 2022 08:15:19 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "89"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": false,\n    \"message\": \"Failed to GET data\",\n    \"errors\": [\n        \"record not found\"\n    ],\n    \"data\": null\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get My Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/user",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\": \"ttes fajar\",\n    \"kata_sandi\": \"123456\",\n    \"no_telp\": \"08961231235\",\n    \"tanggal_Lahir\": \"02/01/2006\",\n    \"pekerjaan\": \"developer\",\n    \"email\": \"tes5t@mail.com\",\n    \"id_provinsi\": \"11\",\n    \"id_kota\": \"1101\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/user",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Profile",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nama\": \"ttes fajar\",\n    \"kata_sandi\": \"123456\",\n    \"no_telp\": \"08961231235\",\n    \"tanggal_Lahir\": \"02/01/2006\",\n    \"pekerjaan\": \"developer\",\n    \"email\": \"tes5t@mail.com\",\n    \"id_provinsi\": \"11\",\n    \"id_kota\": \"1101\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/user",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 08:16:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": \"\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Toko",
+			"item": [
+				{
+					"name": "Get My Toko",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/toko/my",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"toko",
+								"my"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get My Toko",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/toko/my",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"toko",
+										"my"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 08:16:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"nama_toko\": \"tes-faj\",\n        \"url_foto\": \"\",\n        \"user_id\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Profile Toko",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama_toko",
+									"value": "toko update",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/home/ahmad-fajar/Pictures/gorm.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/toko/:id_toko",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"toko",
+								":id_toko"
+							],
+							"variable": [
+								{
+									"key": "id_toko",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Profile Toko",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nama_toko",
+											"value": "toko update",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/ahmad-fajar/Pictures/gorm.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/toko/:id_toko",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"toko",
+										":id_toko"
+									],
+									"variable": [
+										{
+											"key": "id_toko",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 08:16:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to UPDATE data\",\n    \"errors\": null,\n    \"data\": \"Update toko succeed\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Toko By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/toko/:id_toko",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"toko",
+								":id_toko"
+							],
+							"variable": [
+								{
+									"key": "id_toko",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Toko By ID error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/toko/:id_toko",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"toko",
+										":id_toko"
+									],
+									"variable": [
+										{
+											"key": "id_toko",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 08:16:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to GET data\",\n    \"errors\": [\n        \"Toko tidak ditemukan\"\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "Get Toko By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/toko/:id_toko",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"toko",
+										":id_toko"
+									],
+									"variable": [
+										{
+											"key": "id_toko",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 08:16:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "136"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 1,\n        \"nama_toko\": \"toko update\",\n        \"url_foto\": \"1670055395-gorm.png\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Toko",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/toko?limit=10&page=1&nama=244",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"toko"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "nama",
+									"value": "244"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Toko",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/toko?limit=10&page=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"toko"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "nama",
+											"value": "244",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 08:16:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "167"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"page\": 1,\n        \"limit\": 10,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"nama_toko\": \"toko update\",\n                \"url_foto\": \"1670055395-gorm.png\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get All Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{local}}/product?nama_produk=metal&limit=10&page=1&category_id=2&toko_id=4&max_harga=100000&min_harga=1500",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "nama_produk",
+									"value": "metal"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "category_id",
+									"value": "2"
+								},
+								{
+									"key": "toko_id",
+									"value": "4"
+								},
+								{
+									"key": "max_harga",
+									"value": "100000"
+								},
+								{
+									"key": "min_harga",
+									"value": "1500"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{local}}/product?limit=10&page=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product"
+									],
+									"query": [
+										{
+											"key": "nama_produk",
+											"value": "metal",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "category_id",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "toko_id",
+											"value": "4",
+											"disabled": true
+										},
+										{
+											"key": "max_harga",
+											"value": "100000",
+											"disabled": true
+										},
+										{
+											"key": "min_harga",
+											"value": "1500",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:38:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1833"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 2,\n                \"nama_produk\": \"Handmade Soft Computer\",\n                \"slug\": \"handmade-soft-computer\",\n                \"harga_reseler\": 50000,\n                \"harga_konsumen\": 2000,\n                \"stok\": 56,\n                \"deskripsi\": \"Asperiores numquam unde et iusto sit. Neque voluptate veniam id amet atque reprehenderit unde. Quia dignissimos dolor minima velit consequatur minima. Maxime culpa dolores quasi voluptate adipisci sint.\",\n                \"toko\": {\n                    \"id\": 1,\n                    \"nama_toko\": \"toko update\",\n                    \"url_foto\": \"1670055395-gorm.png\"\n                },\n                \"category\": {\n                    \"id\": 1,\n                    \"nama_category\": \"BHASA\"\n                },\n                \"photos\": [\n                    {\n                        \"id\": 1,\n                        \"product_id\": 2,\n                        \"url\": \"1670060259-gorm.png\"\n                    },\n                    {\n                        \"id\": 2,\n                        \"product_id\": 2,\n                        \"url\": \"1670060259-Logo-Javascript.png\"\n                    }\n                ]\n            },\n            {\n                \"id\": 3,\n                \"nama_produk\": \"Practical Wooden Keyboard\",\n                \"slug\": \"practical-wooden-keyboard\",\n                \"harga_reseler\": 1000,\n                \"harga_konsumen\": 3000,\n                \"stok\": 325,\n                \"deskripsi\": \"Tempore accusamus recusandae sint. Illo enim laudantium assumenda qui. Ut atque voluptatibus culpa aperiam odio non ea sequi quisquam. Iste neque ut recusandae delectus possimus.\",\n                \"toko\": {\n                    \"id\": 1,\n                    \"nama_toko\": \"toko update\",\n                    \"url_foto\": \"1670055395-gorm.png\"\n                },\n                \"category\": {\n                    \"id\": 1,\n                    \"nama_category\": \"BHASA\"\n                },\n                \"photos\": [\n                    {\n                        \"id\": 3,\n                        \"product_id\": 3,\n                        \"url\": \"1670060273-gorm.png\"\n                    },\n                    {\n                        \"id\": 4,\n                        \"product_id\": 3,\n                        \"url\": \"1670060273-Logo-Javascript.png\"\n                    }\n                ]\n            },\n            {\n                \"id\": 4,\n                \"nama_produk\": \"Practical Soft Towels\",\n                \"slug\": \"practical-soft-towels\",\n                \"harga_reseler\": 5000,\n                \"harga_konsumen\": 10000,\n                \"stok\": 277,\n                \"deskripsi\": \"Veniam impedit aut eligendi. Aperiam et et et amet et accusantium. Eligendi quidem illo natus doloremque quia beatae fugit ipsa. Ut nesciunt quae voluptas perferendis.\",\n                \"toko\": {\n                    \"id\": 1,\n                    \"nama_toko\": \"toko update\",\n                    \"url_foto\": \"1670055395-gorm.png\"\n                },\n                \"category\": {\n                    \"id\": 1,\n                    \"nama_category\": \"BHASA\"\n                },\n                \"photos\": [\n                    {\n                        \"id\": 5,\n                        \"product_id\": 4,\n                        \"url\": \"1670060281-gorm.png\"\n                    },\n                    {\n                        \"id\": 6,\n                        \"product_id\": 4,\n                        \"url\": \"1670060281-Logo-Javascript.png\"\n                    }\n                ]\n            }\n        ],\n        \"page\": 1,\n        \"limit\": 10\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Product By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{local}}/product/:id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Product By ID error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{local}}/product/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:38:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to GET data\",\n    \"errors\": [\n        \"No Data Product\"\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "Get Product By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{local}}/product/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:38:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "664"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 2,\n        \"nama_produk\": \"Handmade Soft Computer\",\n        \"slug\": \"handmade-soft-computer\",\n        \"harga_reseler\": 50000,\n        \"harga_konsumen\": 2000,\n        \"stok\": 56,\n        \"deskripsi\": \"Asperiores numquam unde et iusto sit. Neque voluptate veniam id amet atque reprehenderit unde. Quia dignissimos dolor minima velit consequatur minima. Maxime culpa dolores quasi voluptate adipisci sint.\",\n        \"toko\": {\n            \"id\": 1,\n            \"nama_toko\": \"toko update\",\n            \"url_foto\": \"1670055395-gorm.png\"\n        },\n        \"category\": {\n            \"id\": 1,\n            \"nama_category\": \"BHASA\"\n        },\n        \"photos\": [\n            {\n                \"id\": 1,\n                \"product_id\": 2,\n                \"url\": \"1670060259-gorm.png\"\n            },\n            {\n                \"id\": 2,\n                \"product_id\": 2,\n                \"url\": \"1670060259-Logo-Javascript.png\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Post Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama_produk",
+									"value": "{{$randomProductName}}",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "harga_reseller",
+									"value": "5000",
+									"type": "text"
+								},
+								{
+									"key": "harga_konsumen",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "stok",
+									"value": "{{$randomInt}}",
+									"type": "text"
+								},
+								{
+									"key": "deskripsi",
+									"value": "{{$randomLoremSentences}}",
+									"type": "text"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/home/ahmad-fajar/Pictures/gorm.png"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/home/ahmad-fajar/Pictures/Logo-Javascript.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/product",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nama_produk",
+											"value": "{{$randomProductName}}",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "harga_reseller",
+											"value": "5000",
+											"type": "text"
+										},
+										{
+											"key": "harga_konsumen",
+											"value": "10000",
+											"type": "text"
+										},
+										{
+											"key": "stok",
+											"value": "{{$randomInt}}",
+											"type": "text"
+										},
+										{
+											"key": "deskripsi",
+											"value": "{{$randomLoremSentences}}",
+											"type": "text"
+										},
+										{
+											"key": "photos",
+											"type": "file",
+											"src": "/home/ahmad-fajar/Pictures/gorm.png"
+										},
+										{
+											"key": "photos",
+											"type": "file",
+											"src": "/home/ahmad-fajar/Pictures/Logo-Javascript.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/product",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:38:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to POST data\",\n    \"errors\": null,\n    \"data\": 4\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product By ID",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nama_produk",
+									"value": "{{$randomProductName}}",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "harga_reseller",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "harga_konsumen",
+									"value": "2000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "stok",
+									"value": "{{$randomInt}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "deskripsi",
+									"value": "{{$randomLoremSentences}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/home/ahmad-fajar/Pictures/gorm.png",
+									"disabled": true
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/home/ahmad-fajar/Pictures/samurai wallpaper 2.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/product/:id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Product By ID",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "nama_produk",
+											"value": "{{$randomProductName}}",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "harga_reseller",
+											"value": "1000",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "harga_konsumen",
+											"value": "2000",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "stok",
+											"value": "{{$randomInt}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "deskripsi",
+											"value": "{{$randomLoremSentences}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "photos",
+											"type": "file",
+											"src": "/home/ahmad-fajar/Pictures/gorm.png",
+											"disabled": true
+										},
+										{
+											"key": "photos",
+											"type": "file",
+											"src": "/home/ahmad-fajar/Pictures/samurai wallpaper 2.jpg",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/product/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:38:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product By ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/product/:id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Product By ID error",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/product/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "14"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:39:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to GET data\",\n    \"errors\": [\n        \"record not found\"\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "Delete Product By ID",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/product/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"product",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 09:39:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": \"\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Trx",
+			"item": [
+				{
+					"name": "Get All Trx",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/trx",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"trx"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Trx",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/trx",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"trx"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 10:03:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1857"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"harga_total\": 394000,\n                \"kode_invoice\": \"INV-1670061051\",\n                \"method_bayar\": \"ovo\",\n                \"alamat_kirim\": {\n                    \"id\": 1,\n                    \"judul_alamat\": \"New Gretafurt\",\n                    \"nama_penerima\": \"Gilberto Kunde\",\n                    \"no_telp\": \"Gilberto Kunde\",\n                    \"detail_alamat\": \"Koby Prairie, 903 Stracke Island, South Adrianna\"\n                },\n                \"detail_trx\": [\n                    {\n                        \"product\": {\n                            \"id\": 1,\n                            \"nama_produk\": \"Gorgeous Granite Pizza\",\n                            \"slug\": \"gorgeous-granite-pizza\",\n                            \"harga_reseler\": 50000,\n                            \"harga_konsumen\": 2000,\n                            \"deskripsi\": \"Gorgeous Granite Pizza\",\n                            \"toko\": {\n                                \"nama_toko\": \"\",\n                                \"url_foto\": \"\"\n                            },\n                            \"category\": {\n                                \"id\": 1,\n                                \"nama_category\": \"BHASA\"\n                            },\n                            \"photos\": [\n                                {\n                                    \"id\": 1,\n                                    \"product_id\": 2,\n                                    \"url\": \"1670060259-gorm.png\"\n                                },\n                                {\n                                    \"id\": 2,\n                                    \"product_id\": 2,\n                                    \"url\": \"1670060259-Logo-Javascript.png\"\n                                }\n                            ]\n                        },\n                        \"toko\": {\n                            \"id\": 1,\n                            \"nama_toko\": \"toko update\",\n                            \"url_foto\": \"1670055395-gorm.png\"\n                        },\n                        \"kuantitas\": 12,\n                        \"harga_total\": 24000\n                    },\n                    {\n                        \"product\": {\n                            \"id\": 2,\n                            \"nama_produk\": \"Practical Wooden Keyboard\",\n                            \"slug\": \"practical-wooden-keyboard\",\n                            \"harga_reseler\": 1000,\n                            \"harga_konsumen\": 3000,\n                            \"deskripsi\": \"Practical Wooden Keyboard\",\n                            \"toko\": {\n                                \"nama_toko\": \"\",\n                                \"url_foto\": \"\"\n                            },\n                            \"category\": {\n                                \"id\": 1,\n                                \"nama_category\": \"BHASA\"\n                            },\n                            \"photos\": [\n                                {\n                                    \"id\": 3,\n                                    \"product_id\": 3,\n                                    \"url\": \"1670060273-gorm.png\"\n                                },\n                                {\n                                    \"id\": 4,\n                                    \"product_id\": 3,\n                                    \"url\": \"1670060273-Logo-Javascript.png\"\n                                }\n                            ]\n                        },\n                        \"toko\": {\n                            \"id\": 1,\n                            \"nama_toko\": \"toko update\",\n                            \"url_foto\": \"1670055395-gorm.png\"\n                        },\n                        \"kuantitas\": 20,\n                        \"harga_total\": 60000\n                    },\n                    {\n                        \"product\": {\n                            \"id\": 3,\n                            \"nama_produk\": \"Practical Soft Towels\",\n                            \"slug\": \"practical-soft-towels\",\n                            \"harga_reseler\": 5000,\n                            \"harga_konsumen\": 10000,\n                            \"deskripsi\": \"Practical Soft Towels\",\n                            \"toko\": {\n                                \"nama_toko\": \"\",\n                                \"url_foto\": \"\"\n                            },\n                            \"category\": {\n                                \"id\": 1,\n                                \"nama_category\": \"BHASA\"\n                            },\n                            \"photos\": [\n                                {\n                                    \"id\": 5,\n                                    \"product_id\": 4,\n                                    \"url\": \"1670060281-gorm.png\"\n                                },\n                                {\n                                    \"id\": 6,\n                                    \"product_id\": 4,\n                                    \"url\": \"1670060281-Logo-Javascript.png\"\n                                }\n                            ]\n                        },\n                        \"toko\": {\n                            \"id\": 1,\n                            \"nama_toko\": \"toko update\",\n                            \"url_foto\": \"1670055395-gorm.png\"\n                        },\n                        \"kuantitas\": 31,\n                        \"harga_total\": 310000\n                    }\n                ]\n            }\n        ],\n        \"page\": 0,\n        \"limit\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Product By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/trx/:id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"trx",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Product By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/trx/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"trx",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 10:07:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"Failed to GET data\",\n    \"errors\": [\n        \"No Data Trx\"\n    ],\n    \"data\": null\n}"
+						},
+						{
+							"name": "Get Product By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/trx/:id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"trx",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 10:10:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1830"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to GET data\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": 2,\n        \"harga_total\": 1302000,\n        \"kode_invoice\": \"INV-1670061868\",\n        \"method_bayar\": \"bca\",\n        \"alamat_kirim\": {\n            \"id\": 2,\n            \"judul_alamat\": \"New Gretafurt\",\n            \"nama_penerima\": \"Gilberto Kunde\",\n            \"no_telp\": \"Gilberto Kunde\",\n            \"detail_alamat\": \"Koby Prairie, 903 Stracke Island, South Adrianna\"\n        },\n        \"detail_trx\": [\n            {\n                \"product\": {\n                    \"id\": 4,\n                    \"nama_produk\": \"Gorgeous Granite Pizza\",\n                    \"slug\": \"gorgeous-granite-pizza\",\n                    \"harga_reseler\": 50000,\n                    \"harga_konsumen\": 2000,\n                    \"deskripsi\": \"Gorgeous Granite Pizza\",\n                    \"toko\": {\n                        \"nama_toko\": \"\",\n                        \"url_foto\": \"\"\n                    },\n                    \"category\": {\n                        \"id\": 1,\n                        \"nama_category\": \"BHASA\"\n                    },\n                    \"photos\": [\n                        {\n                            \"id\": 1,\n                            \"product_id\": 2,\n                            \"url\": \"1670060259-gorm.png\"\n                        },\n                        {\n                            \"id\": 2,\n                            \"product_id\": 2,\n                            \"url\": \"1670060259-Logo-Javascript.png\"\n                        }\n                    ]\n                },\n                \"toko\": {\n                    \"id\": 1,\n                    \"nama_toko\": \"toko update\",\n                    \"url_foto\": \"1670055395-gorm.png\"\n                },\n                \"kuantitas\": 1,\n                \"harga_total\": 2000\n            },\n            {\n                \"product\": {\n                    \"id\": 5,\n                    \"nama_produk\": \"Practical Wooden Keyboard\",\n                    \"slug\": \"practical-wooden-keyboard\",\n                    \"harga_reseler\": 1000,\n                    \"harga_konsumen\": 3000,\n                    \"deskripsi\": \"Practical Wooden Keyboard\",\n                    \"toko\": {\n                        \"nama_toko\": \"\",\n                        \"url_foto\": \"\"\n                    },\n                    \"category\": {\n                        \"id\": 1,\n                        \"nama_category\": \"BHASA\"\n                    },\n                    \"photos\": [\n                        {\n                            \"id\": 3,\n                            \"product_id\": 3,\n                            \"url\": \"1670060273-gorm.png\"\n                        },\n                        {\n                            \"id\": 4,\n                            \"product_id\": 3,\n                            \"url\": \"1670060273-Logo-Javascript.png\"\n                        }\n                    ]\n                },\n                \"toko\": {\n                    \"id\": 1,\n                    \"nama_toko\": \"toko update\",\n                    \"url_foto\": \"1670055395-gorm.png\"\n                },\n                \"kuantitas\": 100,\n                \"harga_total\": 300000\n            },\n            {\n                \"product\": {\n                    \"id\": 6,\n                    \"nama_produk\": \"Practical Soft Towels\",\n                    \"slug\": \"practical-soft-towels\",\n                    \"harga_reseler\": 5000,\n                    \"harga_konsumen\": 10000,\n                    \"deskripsi\": \"Practical Soft Towels\",\n                    \"toko\": {\n                        \"nama_toko\": \"\",\n                        \"url_foto\": \"\"\n                    },\n                    \"category\": {\n                        \"id\": 1,\n                        \"nama_category\": \"BHASA\"\n                    },\n                    \"photos\": [\n                        {\n                            \"id\": 5,\n                            \"product_id\": 4,\n                            \"url\": \"1670060281-gorm.png\"\n                        },\n                        {\n                            \"id\": 6,\n                            \"product_id\": 4,\n                            \"url\": \"1670060281-Logo-Javascript.png\"\n                        }\n                    ]\n                },\n                \"toko\": {\n                    \"id\": 1,\n                    \"nama_toko\": \"toko update\",\n                    \"url_foto\": \"1670055395-gorm.png\"\n                },\n                \"kuantitas\": 100,\n                \"harga_total\": 1000000\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Post Trx",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"method_bayar\":\"bca\",\n    \"alamat_kirim\":1,\n    \"detail_trx\":[\n        {\n            \"product_id\":2,\n            \"kuantitas\":1\n        },\n         {\n            \"product_id\":3,\n            \"kuantitas\":100\n        },\n         {\n            \"product_id\":4,\n            \"kuantitas\":100\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/trx",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"trx"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"method_bayar\":\"ovo\",\n    \"alamat_kirim\":4,\n    \"detail_trx\":[\n        {\n            \"product_id\":15,\n            \"kuantitas\":10\n        },\n         {\n            \"product_id\":16,\n            \"kuantitas\":20\n        },\n         {\n            \"product_id\":18,\n            \"kuantitas\":30\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/trx",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"trx"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 03 Dec 2022 04:46:12 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to POST data\",\n    \"errors\": null,\n    \"data\": 6\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Province City",
+			"item": [
+				{
+					"name": "Get List Province",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/provcity/listprovincies",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"provcity",
+								"listprovincies"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get List Province",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/provcity/listprovincies",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"provcity",
+										"listprovincies"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 29 Nov 2022 10:53:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1234"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to get data\",\n    \"errors\": null,\n    \"data\": [\n        {\n            \"id\": \"11\",\n            \"name\": \"ACEH\"\n        },\n        {\n            \"id\": \"12\",\n            \"name\": \"SUMATERA UTARA\"\n        },\n        {\n            \"id\": \"13\",\n            \"name\": \"SUMATERA BARAT\"\n        },\n        {\n            \"id\": \"14\",\n            \"name\": \"RIAU\"\n        },\n        {\n            \"id\": \"15\",\n            \"name\": \"JAMBI\"\n        },\n        {\n            \"id\": \"16\",\n            \"name\": \"SUMATERA SELATAN\"\n        },\n        {\n            \"id\": \"17\",\n            \"name\": \"BENGKULU\"\n        },\n        {\n            \"id\": \"18\",\n            \"name\": \"LAMPUNG\"\n        },\n        {\n            \"id\": \"19\",\n            \"name\": \"KEPULAUAN BANGKA BELITUNG\"\n        },\n        {\n            \"id\": \"21\",\n            \"name\": \"KEPULAUAN RIAU\"\n        },\n        {\n            \"id\": \"31\",\n            \"name\": \"DKI JAKARTA\"\n        },\n        {\n            \"id\": \"32\",\n            \"name\": \"JAWA BARAT\"\n        },\n        {\n            \"id\": \"33\",\n            \"name\": \"JAWA TENGAH\"\n        },\n        {\n            \"id\": \"34\",\n            \"name\": \"DI YOGYAKARTA\"\n        },\n        {\n            \"id\": \"35\",\n            \"name\": \"JAWA TIMUR\"\n        },\n        {\n            \"id\": \"36\",\n            \"name\": \"BANTEN\"\n        },\n        {\n            \"id\": \"51\",\n            \"name\": \"BALI\"\n        },\n        {\n            \"id\": \"52\",\n            \"name\": \"NUSA TENGGARA BARAT\"\n        },\n        {\n            \"id\": \"53\",\n            \"name\": \"NUSA TENGGARA TIMUR\"\n        },\n        {\n            \"id\": \"61\",\n            \"name\": \"KALIMANTAN BARAT\"\n        },\n        {\n            \"id\": \"62\",\n            \"name\": \"KALIMANTAN TENGAH\"\n        },\n        {\n            \"id\": \"63\",\n            \"name\": \"KALIMANTAN SELATAN\"\n        },\n        {\n            \"id\": \"64\",\n            \"name\": \"KALIMANTAN TIMUR\"\n        },\n        {\n            \"id\": \"65\",\n            \"name\": \"KALIMANTAN UTARA\"\n        },\n        {\n            \"id\": \"71\",\n            \"name\": \"SULAWESI UTARA\"\n        },\n        {\n            \"id\": \"72\",\n            \"name\": \"SULAWESI TENGAH\"\n        },\n        {\n            \"id\": \"73\",\n            \"name\": \"SULAWESI SELATAN\"\n        },\n        {\n            \"id\": \"74\",\n            \"name\": \"SULAWESI TENGGARA\"\n        },\n        {\n            \"id\": \"75\",\n            \"name\": \"GORONTALO\"\n        },\n        {\n            \"id\": \"76\",\n            \"name\": \"SULAWESI BARAT\"\n        },\n        {\n            \"id\": \"81\",\n            \"name\": \"MALUKU\"\n        },\n        {\n            \"id\": \"82\",\n            \"name\": \"MALUKU UTARA\"\n        },\n        {\n            \"id\": \"91\",\n            \"name\": \"PAPUA BARAT\"\n        },\n        {\n            \"id\": \"94\",\n            \"name\": \"PAPUA\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get List City",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/provcity/listcities/:prov_id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"provcity",
+								"listcities",
+								":prov_id"
+							],
+							"variable": [
+								{
+									"key": "prov_id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get List City",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/provcity/listcities/:prov_id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"provcity",
+										"listcities",
+										":prov_id"
+									],
+									"variable": [
+										{
+											"key": "prov_id",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 29 Nov 2022 10:53:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1494"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to get data\",\n    \"errors\": null,\n    \"data\": [\n        {\n            \"id\": \"1101\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN SIMEULUE\"\n        },\n        {\n            \"id\": \"1102\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH SINGKIL\"\n        },\n        {\n            \"id\": \"1103\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH SELATAN\"\n        },\n        {\n            \"id\": \"1104\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH TENGGARA\"\n        },\n        {\n            \"id\": \"1105\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH TIMUR\"\n        },\n        {\n            \"id\": \"1106\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH TENGAH\"\n        },\n        {\n            \"id\": \"1107\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH BARAT\"\n        },\n        {\n            \"id\": \"1108\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH BESAR\"\n        },\n        {\n            \"id\": \"1109\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN PIDIE\"\n        },\n        {\n            \"id\": \"1110\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN BIREUEN\"\n        },\n        {\n            \"id\": \"1111\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH UTARA\"\n        },\n        {\n            \"id\": \"1112\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH BARAT DAYA\"\n        },\n        {\n            \"id\": \"1113\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN GAYO LUES\"\n        },\n        {\n            \"id\": \"1114\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH TAMIANG\"\n        },\n        {\n            \"id\": \"1115\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN NAGAN RAYA\"\n        },\n        {\n            \"id\": \"1116\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN ACEH JAYA\"\n        },\n        {\n            \"id\": \"1117\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN BENER MERIAH\"\n        },\n        {\n            \"id\": \"1118\",\n            \"province_id\": \"11\",\n            \"name\": \"KABUPATEN PIDIE JAYA\"\n        },\n        {\n            \"id\": \"1171\",\n            \"province_id\": \"11\",\n            \"name\": \"KOTA BANDA ACEH\"\n        },\n        {\n            \"id\": \"1172\",\n            \"province_id\": \"11\",\n            \"name\": \"KOTA SABANG\"\n        },\n        {\n            \"id\": \"1173\",\n            \"province_id\": \"11\",\n            \"name\": \"KOTA LANGSA\"\n        },\n        {\n            \"id\": \"1174\",\n            \"province_id\": \"11\",\n            \"name\": \"KOTA LHOKSEUMAWE\"\n        },\n        {\n            \"id\": \"1175\",\n            \"province_id\": \"11\",\n            \"name\": \"KOTA SUBULUSSALAM\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Detail Province",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/provcity/detailprovince/:prov_id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"provcity",
+								"detailprovince",
+								":prov_id"
+							],
+							"variable": [
+								{
+									"key": "prov_id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get List City Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/provcity/detailprovince/:prov_id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"provcity",
+										"detailprovince",
+										":prov_id"
+									],
+									"variable": [
+										{
+											"key": "prov_id",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 29 Nov 2022 10:53:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to get data\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": \"11\",\n        \"name\": \"ACEH\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Detail City",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/provcity/detailcity/:city_id",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"provcity",
+								"detailcity",
+								":city_id"
+							],
+							"variable": [
+								{
+									"key": "city_id",
+									"value": "1103"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Detail City",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/provcity/detailcity/:city_id",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"provcity",
+										"detailcity",
+										":city_id"
+									],
+									"variable": [
+										{
+											"key": "city_id",
+											"value": "1103"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Tue, 29 Nov 2022 10:55:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Succeed to get data\",\n    \"errors\": null,\n    \"data\": {\n        \"id\": \"1103\",\n        \"province_id\": \"11\",\n        \"name\": \"KABUPATEN ACEH SELATAN\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "localhost:8000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
