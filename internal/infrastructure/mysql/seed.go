@@ -1,8 +1,8 @@
 package mysql
 
-import "tugas_akhir_example/internal/daos"
+import "tugas_akhir_example/internal/pkg/entity"
 
-var booksSeed = []daos.Book{
+var booksSeed = []entity.Book{
 	{
 		Title:       "Drew: The Man Behind the Poster",
 		Description: "Encounter for screening mammogram for malignant neoplasm of breast",

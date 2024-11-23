@@ -2,7 +2,7 @@ package controller
 
 import (
 	"log"
-	booksdto "tugas_akhir_example/internal/pkg/dto"
+	booksmodel "tugas_akhir_example/internal/pkg/model"
 	booksusecase "tugas_akhir_example/internal/pkg/usecase"
 
 	"github.com/gofiber/fiber/v2"
@@ -29,7 +29,7 @@ func NewBooksController(booksusecase booksusecase.BooksUseCase) BooksController 
 func (uc *BooksControllerImpl) GetAllBooks(ctx *fiber.Ctx) error {
 	c := ctx.Context()
 
-	filter := new(booksdto.BooksFilter)
+	filter := new(booksmodel.BooksFilter)
 	if err := ctx.QueryParser(filter); err != nil {
 		log.Println(err)
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
@@ -37,7 +37,7 @@ func (uc *BooksControllerImpl) GetAllBooks(ctx *fiber.Ctx) error {
 		})
 	}
 
-	res, err := uc.booksusecase.GetAllBooks(c, booksdto.BooksFilter{
+	res, err := uc.booksusecase.GetAllBooks(c, booksmodel.BooksFilter{
 		Title: filter.Title,
 		Limit: filter.Limit,
 		Page:  filter.Page,
@@ -78,7 +78,7 @@ func (uc *BooksControllerImpl) GetBooksByID(ctx *fiber.Ctx) error {
 func (uc *BooksControllerImpl) CreateBooks(ctx *fiber.Ctx) error {
 	c := ctx.Context()
 
-	data := new(booksdto.BooksReqCreate)
+	data := new(booksmodel.BooksReqCreate)
 	if err := ctx.BodyParser(data); err != nil {
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err.Error(),
@@ -106,7 +106,7 @@ func (uc *BooksControllerImpl) UpdateBooksByID(ctx *fiber.Ctx) error {
 		})
 	}
 
-	data := new(booksdto.BooksReqUpdate)
+	data := new(booksmodel.BooksReqUpdate)
 	if err := ctx.BodyParser(data); err != nil {
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Bad request",

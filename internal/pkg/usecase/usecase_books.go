@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"log"
-	"tugas_akhir_example/internal/daos"
 	"tugas_akhir_example/internal/helper"
-	booksdto "tugas_akhir_example/internal/pkg/dto"
+	"tugas_akhir_example/internal/pkg/entity"
+	booksmodel "tugas_akhir_example/internal/pkg/model"
 	booksrepository "tugas_akhir_example/internal/pkg/repository"
 
 	"github.com/gofiber/fiber/v2"
@@ -17,10 +17,10 @@ import (
 var currentfilepath = "internal/pkg/usecase/usecase.go"
 
 type BooksUseCase interface {
-	GetAllBooks(ctx context.Context, params booksdto.BooksFilter) (res []booksdto.BooksResp, err *helper.ErrorStruct)
-	GetBooksByID(ctx context.Context, booksid string) (res booksdto.BooksResp, err *helper.ErrorStruct)
-	CreateBooks(ctx context.Context, data booksdto.BooksReqCreate) (res uint, err *helper.ErrorStruct)
-	UpdateBooksByID(ctx context.Context, booksid string, data booksdto.BooksReqUpdate) (res string, err *helper.ErrorStruct)
+	GetAllBooks(ctx context.Context, params booksmodel.BooksFilter) (res []booksmodel.BooksResp, err *helper.ErrorStruct)
+	GetBooksByID(ctx context.Context, booksid string) (res booksmodel.BooksResp, err *helper.ErrorStruct)
+	CreateBooks(ctx context.Context, data booksmodel.BooksReqCreate) (res uint, err *helper.ErrorStruct)
+	UpdateBooksByID(ctx context.Context, booksid string, data booksmodel.BooksReqUpdate) (res string, err *helper.ErrorStruct)
 	DeleteBooksByID(ctx context.Context, booksid string) (res string, err *helper.ErrorStruct)
 }
 
@@ -35,7 +35,7 @@ func NewBooksUseCase(booksrepository booksrepository.BooksRepository) BooksUseCa
 
 }
 
-func (alc *BooksUseCaseImpl) GetAllBooks(ctx context.Context, params booksdto.BooksFilter) (res []booksdto.BooksResp, err *helper.ErrorStruct) {
+func (alc *BooksUseCaseImpl) GetAllBooks(ctx context.Context, params booksmodel.BooksFilter) (res []booksmodel.BooksResp, err *helper.ErrorStruct) {
 	if params.Limit < 1 {
 		params.Limit = 10
 	}
@@ -46,7 +46,7 @@ func (alc *BooksUseCaseImpl) GetAllBooks(ctx context.Context, params booksdto.Bo
 		params.Page = (params.Page - 1) * params.Limit
 	}
 
-	resRepo, errRepo := alc.booksrepository.GetAllBooks(ctx, daos.FilterBooks{
+	resRepo, errRepo := alc.booksrepository.GetAllBooks(ctx, entity.FilterBooks{
 		Limit:  params.Limit,
 		Offset: params.Page,
 		Title:  params.Title,
@@ -67,7 +67,7 @@ func (alc *BooksUseCaseImpl) GetAllBooks(ctx context.Context, params booksdto.Bo
 	}
 
 	for _, v := range resRepo {
-		res = append(res, booksdto.BooksResp{
+		res = append(res, booksmodel.BooksResp{
 			ID:          v.ID,
 			Title:       v.Title,
 			Description: v.Description,
@@ -77,7 +77,7 @@ func (alc *BooksUseCaseImpl) GetAllBooks(ctx context.Context, params booksdto.Bo
 
 	return res, nil
 }
-func (alc *BooksUseCaseImpl) GetBooksByID(ctx context.Context, booksid string) (res booksdto.BooksResp, err *helper.ErrorStruct) {
+func (alc *BooksUseCaseImpl) GetBooksByID(ctx context.Context, booksid string) (res booksmodel.BooksResp, err *helper.ErrorStruct) {
 	resRepo, errRepo := alc.booksrepository.GetBooksByID(ctx, booksid)
 	if errors.Is(errRepo, gorm.ErrRecordNotFound) {
 		return res, &helper.ErrorStruct{
@@ -94,7 +94,7 @@ func (alc *BooksUseCaseImpl) GetBooksByID(ctx context.Context, booksid string) (
 		}
 	}
 
-	res = booksdto.BooksResp{
+	res = booksmodel.BooksResp{
 		ID:          resRepo.ID,
 		Title:       resRepo.Title,
 		Description: resRepo.Description,
@@ -103,7 +103,7 @@ func (alc *BooksUseCaseImpl) GetBooksByID(ctx context.Context, booksid string) (
 
 	return res, nil
 }
-func (alc *BooksUseCaseImpl) CreateBooks(ctx context.Context, data booksdto.BooksReqCreate) (res uint, err *helper.ErrorStruct) {
+func (alc *BooksUseCaseImpl) CreateBooks(ctx context.Context, data booksmodel.BooksReqCreate) (res uint, err *helper.ErrorStruct) {
 	if errValidate := helper.Validate.Struct(data); errValidate != nil {
 		log.Println(errValidate)
 		return res, &helper.ErrorStruct{
@@ -112,7 +112,7 @@ func (alc *BooksUseCaseImpl) CreateBooks(ctx context.Context, data booksdto.Book
 		}
 	}
 
-	resRepo, errRepo := alc.booksrepository.CreateBooks(ctx, daos.Book{
+	resRepo, errRepo := alc.booksrepository.CreateBooks(ctx, entity.Book{
 		Title:       data.Title,
 		Description: data.Description,
 		Author:      data.Author,
@@ -127,7 +127,7 @@ func (alc *BooksUseCaseImpl) CreateBooks(ctx context.Context, data booksdto.Book
 
 	return resRepo, nil
 }
-func (alc *BooksUseCaseImpl) UpdateBooksByID(ctx context.Context, booksid string, data booksdto.BooksReqUpdate) (res string, err *helper.ErrorStruct) {
+func (alc *BooksUseCaseImpl) UpdateBooksByID(ctx context.Context, booksid string, data booksmodel.BooksReqUpdate) (res string, err *helper.ErrorStruct) {
 	if errValidate := helper.Validate.Struct(data); errValidate != nil {
 		log.Println(errValidate)
 		return res, &helper.ErrorStruct{
@@ -136,7 +136,7 @@ func (alc *BooksUseCaseImpl) UpdateBooksByID(ctx context.Context, booksid string
 		}
 	}
 
-	resRepo, errRepo := alc.booksrepository.UpdateBooksByID(ctx, booksid, daos.Book{
+	resRepo, errRepo := alc.booksrepository.UpdateBooksByID(ctx, booksid, entity.Book{
 		Title:       data.Title,
 		Description: data.Description,
 		Author:      data.Author,

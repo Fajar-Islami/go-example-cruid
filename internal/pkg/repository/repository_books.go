@@ -3,16 +3,16 @@ package repository
 import (
 	"context"
 	"fmt"
-	"tugas_akhir_example/internal/daos"
+	"tugas_akhir_example/internal/pkg/entity"
 
 	"gorm.io/gorm"
 )
 
 type BooksRepository interface {
-	GetAllBooks(ctx context.Context, params daos.FilterBooks) (res []daos.Book, err error)
-	GetBooksByID(ctx context.Context, booksid string) (res daos.Book, err error)
-	CreateBooks(ctx context.Context, data daos.Book) (res uint, err error)
-	UpdateBooksByID(ctx context.Context, booksid string, data daos.Book) (res string, err error)
+	GetAllBooks(ctx context.Context, params entity.FilterBooks) (res []entity.Book, err error)
+	GetBooksByID(ctx context.Context, booksid string) (res entity.Book, err error)
+	CreateBooks(ctx context.Context, data entity.Book) (res uint, err error)
+	UpdateBooksByID(ctx context.Context, booksid string, data entity.Book) (res string, err error)
 	DeleteBooksByID(ctx context.Context, booksid string) (res string, err error)
 }
 
@@ -25,7 +25,7 @@ func NewBooksRepository(db *gorm.DB) BooksRepository {
 		db: db,
 	}
 }
-func (alr *BooksRepositoryImpl) GetAllBooks(ctx context.Context, params daos.FilterBooks) (res []daos.Book, err error) {
+func (alr *BooksRepositoryImpl) GetAllBooks(ctx context.Context, params entity.FilterBooks) (res []entity.Book, err error) {
 	db := alr.db
 
 	filter := map[string][]any{
@@ -48,14 +48,14 @@ func (alr *BooksRepositoryImpl) GetAllBooks(ctx context.Context, params daos.Fil
 	return res, nil
 }
 
-func (alr *BooksRepositoryImpl) GetBooksByID(ctx context.Context, booksid string) (res daos.Book, err error) {
+func (alr *BooksRepositoryImpl) GetBooksByID(ctx context.Context, booksid string) (res entity.Book, err error) {
 	if err := alr.db.First(&res, booksid).WithContext(ctx).Error; err != nil {
 		return res, err
 	}
 	return res, nil
 }
 
-func (alr *BooksRepositoryImpl) CreateBooks(ctx context.Context, data daos.Book) (res uint, err error) {
+func (alr *BooksRepositoryImpl) CreateBooks(ctx context.Context, data entity.Book) (res uint, err error) {
 	result := alr.db.Create(&data).WithContext(ctx)
 	if result.Error != nil {
 		return res, result.Error
@@ -64,8 +64,8 @@ func (alr *BooksRepositoryImpl) CreateBooks(ctx context.Context, data daos.Book)
 	return data.ID, nil
 }
 
-func (alr *BooksRepositoryImpl) UpdateBooksByID(ctx context.Context, booksid string, data daos.Book) (res string, err error) {
-	var dataBooks daos.Book
+func (alr *BooksRepositoryImpl) UpdateBooksByID(ctx context.Context, booksid string, data entity.Book) (res string, err error) {
+	var dataBooks entity.Book
 	if err = alr.db.Where("id = ? ", booksid).First(&dataBooks).WithContext(ctx).Error; err != nil {
 		return "Update books failed", gorm.ErrRecordNotFound
 	}
@@ -78,7 +78,7 @@ func (alr *BooksRepositoryImpl) UpdateBooksByID(ctx context.Context, booksid str
 }
 
 func (alr *BooksRepositoryImpl) DeleteBooksByID(ctx context.Context, booksid string) (res string, err error) {
-	var dataBooks daos.Book
+	var dataBooks entity.Book
 	if err = alr.db.Where("id = ?", booksid).First(&dataBooks).WithContext(ctx).Error; err != nil {
 		return "Delete book failed", gorm.ErrRecordNotFound
 	}
