@@ -7,6 +7,9 @@ import (
 	"regexp"
 	"tugas_akhir_example/internal/helper"
 	"tugas_akhir_example/internal/infrastructure/mysql"
+	"tugas_akhir_example/internal/pkg/repository"
+	"tugas_akhir_example/internal/pkg/usecase"
+	"tugas_akhir_example/internal/utils"
 
 	"github.com/spf13/viper"
 	"gorm.io/gorm"
@@ -14,12 +17,12 @@ import (
 
 var v *viper.Viper
 
-const currentfilepath = "internal/infrastructure/container/container.go"
-
 type (
 	Container struct {
-		Mysqldb *gorm.DB
-		Apps    *Apps
+		Mysqldb  *gorm.DB
+		Apps     *Apps
+		BooksUsc usecase.BooksUseCase
+		UserUsc  usecase.UsersUseCase
 	}
 
 	Apps struct {
@@ -33,7 +36,7 @@ type (
 )
 
 func loadEnv() {
-	projectDirName := "tugas_akhir_example"
+	projectDirName := "go-example-cruid"
 	projectName := regexp.MustCompile(`^(.*` + projectDirName + `)`)
 	currentWorkDirectory, _ := os.Getwd()
 	rootPath := projectName.Find([]byte(currentWorkDirectory))
@@ -49,40 +52,49 @@ func init() {
 
 	path, err := os.Executable()
 	if err != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprintf("os.Executable panic : %s", err.Error()))
+		helper.Logger(helper.LoggerLevelPanic, fmt.Sprintf("os.Executable panic : %s", err.Error()), err)
 	}
 
 	dir := filepath.Dir(path)
 	v.AddConfigPath(dir)
 
 	if err := v.ReadInConfig(); err != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprintf("failed read config : %s", err.Error()))
+		helper.Logger(helper.LoggerLevelPanic, fmt.Sprintf("failed read config : %s", err.Error()), err)
 	}
 
 	err = v.ReadInConfig()
 	if err != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprintf("failed init config : %s", err.Error()))
+		helper.Logger(helper.LoggerLevelPanic, fmt.Sprintf("failed init config : %s", err.Error()), err)
 	}
 
-	helper.Logger(currentfilepath, helper.LoggerLevelInfo, "Succeed read configuration file")
+	helper.Logger(helper.LoggerLevelInfo, "Succeed read configuration file", err)
 }
 
 func AppsInit(v *viper.Viper) (apps Apps) {
 	err := v.Unmarshal(&apps)
 	if err != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprint("Error when unmarshal configuration file : ", err.Error()))
+		helper.Logger(helper.LoggerLevelPanic, fmt.Sprint("Error when unmarshal configuration file : ", err.Error()), err)
 	}
-	helper.Logger(currentfilepath, helper.LoggerLevelInfo, "Succeed when unmarshal configuration file")
+	helper.Logger(helper.LoggerLevelInfo, "Succeed when unmarshal configuration file", err)
 	return
 }
 
 func InitContainer() (cont *Container) {
 	apps := AppsInit(v)
+	utils.InitJWT(apps.SecretJwt)
 	mysqldb := mysql.DatabaseInit(v)
 
+	bookRepo := repository.NewBooksRepository(mysqldb)
+	userRepo := repository.NewUsersRepository(mysqldb)
+
+	bookUsc := usecase.NewBooksUseCase(bookRepo)
+	userUsc := usecase.NewUsersUseCase(userRepo)
+
 	return &Container{
-		Apps:    &apps,
-		Mysqldb: mysqldb,
+		Apps:     &apps,
+		Mysqldb:  mysqldb,
+		BooksUsc: bookUsc,
+		UserUsc:  userUsc,
 	}
 
 }

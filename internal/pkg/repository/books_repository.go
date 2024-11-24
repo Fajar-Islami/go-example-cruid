@@ -25,11 +25,11 @@ func NewBooksRepository(db *gorm.DB) BooksRepository {
 		db: db,
 	}
 }
-func (alr *BooksRepositoryImpl) GetAllBooks(ctx context.Context, params entity.FilterBooks) (res []entity.Book, err error) {
-	db := alr.db
+func (r *BooksRepositoryImpl) GetAllBooks(ctx context.Context, params entity.FilterBooks) (res []entity.Book, err error) {
+	db := r.db
 
 	filter := map[string][]any{
-		"title like ? or description like ? or author like ?": []any{fmt.Sprint("%" + params.Title), "%ab ", "%ab"},
+		"title like ? or description like ? or author like ?": {fmt.Sprint("%" + params.Title), "%ab ", "%ab"},
 	}
 
 	// if params.Title != "" {
@@ -48,15 +48,15 @@ func (alr *BooksRepositoryImpl) GetAllBooks(ctx context.Context, params entity.F
 	return res, nil
 }
 
-func (alr *BooksRepositoryImpl) GetBooksByID(ctx context.Context, booksid string) (res entity.Book, err error) {
-	if err := alr.db.First(&res, booksid).WithContext(ctx).Error; err != nil {
+func (r *BooksRepositoryImpl) GetBooksByID(ctx context.Context, booksid string) (res entity.Book, err error) {
+	if err := r.db.First(&res, booksid).WithContext(ctx).Error; err != nil {
 		return res, err
 	}
 	return res, nil
 }
 
-func (alr *BooksRepositoryImpl) CreateBooks(ctx context.Context, data entity.Book) (res uint, err error) {
-	result := alr.db.Create(&data).WithContext(ctx)
+func (r *BooksRepositoryImpl) CreateBooks(ctx context.Context, data entity.Book) (res uint, err error) {
+	result := r.db.Create(&data).WithContext(ctx)
 	if result.Error != nil {
 		return res, result.Error
 	}
@@ -64,26 +64,26 @@ func (alr *BooksRepositoryImpl) CreateBooks(ctx context.Context, data entity.Boo
 	return data.ID, nil
 }
 
-func (alr *BooksRepositoryImpl) UpdateBooksByID(ctx context.Context, booksid string, data entity.Book) (res string, err error) {
+func (r *BooksRepositoryImpl) UpdateBooksByID(ctx context.Context, booksid string, data entity.Book) (res string, err error) {
 	var dataBooks entity.Book
-	if err = alr.db.Where("id = ? ", booksid).First(&dataBooks).WithContext(ctx).Error; err != nil {
+	if err = r.db.Where("id = ? ", booksid).First(&dataBooks).WithContext(ctx).Error; err != nil {
 		return "Update books failed", gorm.ErrRecordNotFound
 	}
 
-	if err := alr.db.Model(dataBooks).Updates(&data).Where("id = ? ", booksid).Error; err != nil {
+	if err := r.db.Model(dataBooks).Updates(&data).Where("id = ? ", booksid).Error; err != nil {
 		return "Update books failed", err
 	}
 
 	return res, nil
 }
 
-func (alr *BooksRepositoryImpl) DeleteBooksByID(ctx context.Context, booksid string) (res string, err error) {
+func (r *BooksRepositoryImpl) DeleteBooksByID(ctx context.Context, booksid string) (res string, err error) {
 	var dataBooks entity.Book
-	if err = alr.db.Where("id = ?", booksid).First(&dataBooks).WithContext(ctx).Error; err != nil {
+	if err = r.db.Where("id = ?", booksid).First(&dataBooks).WithContext(ctx).Error; err != nil {
 		return "Delete book failed", gorm.ErrRecordNotFound
 	}
 
-	if err := alr.db.Model(dataBooks).Delete(&dataBooks).Error; err != nil {
+	if err := r.db.Model(dataBooks).Delete(&dataBooks).Error; err != nil {
 		return "Delete book failed", err
 	}
 

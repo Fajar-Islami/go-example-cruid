@@ -1,6 +1,12 @@
 package helper
 
-import "github.com/sirupsen/logrus"
+import (
+	"errors"
+	"fmt"
+	"runtime"
+
+	"github.com/rs/zerolog/log"
+)
 
 const (
 	LoggerLevelTrace = "LoggerLevelTrace"
@@ -12,35 +18,28 @@ const (
 	LoggerLevelPanic = "LoggerLevelPanic"
 )
 
-func Logger(filepath, level, message string) {
-	if filepath == "" || level == "" || message == "" {
-		logrus.WithFields(
-			logrus.Fields{
-				"file": "internal/helper/logger.go",
-			},
-		).Error("All params is required")
+func Logger(level, message string, err error) {
+	if err == nil && (level == "" || message == "") {
+		log.Error().Stack().Err(errors.New("all params log is required")).Msg("")
 	}
 
-	logging := logrus.WithFields(
-		logrus.Fields{
-			"file": filepath,
-		})
+	pc, _, line, _ := runtime.Caller(1)
+	path := runtime.FuncForPC(pc).Name()
 
 	switch level {
 	case LoggerLevelDebug:
-		logging.Debug(message)
+		log.Debug().Str("message", message).Msg("")
 	case LoggerLevelInfo:
-		logging.Info(message)
+		log.Info().Str("message", message).Msg("")
 	case LoggerLevelWarn:
-		logging.Warn(message)
+		log.Warn().Str("message", message).Msg("")
 	case LoggerLevelError:
-		logging.Error(message)
+		log.Error().Str("path", path).Str("line", fmt.Sprint(line)).Err(err).Send()
 	case LoggerLevelFatal:
-		logging.Fatal(message)
+		log.Fatal().Str("path", path).Str("line", fmt.Sprint(line)).Err(err).Send()
 	case LoggerLevelPanic:
-		logging.Panic(message)
+		log.Panic().Str("path", path).Str("line", fmt.Sprint(line)).Err(err).Send()
 	default:
-		logging.Error("Level invalid")
+		log.Error().Stack().Err(errors.New("logger level invalid")).Send()
 	}
-
 }

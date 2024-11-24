@@ -5,6 +5,8 @@ import "gorm.io/gorm"
 type (
 	Book struct {
 		gorm.Model
+		UserID      uint
+		User        User
 		Title       string
 		Description string
 		Author      string

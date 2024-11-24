@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"tugas_akhir_example/internal/helper"
 	"tugas_akhir_example/internal/infrastructure/container"
-	"tugas_akhir_example/internal/infrastructure/mysql"
 
 	rest "tugas_akhir_example/internal/server/http"
 
@@ -17,7 +16,7 @@ func main() {
 	logrus.SetFormatter(&logrus.JSONFormatter{})
 
 	containerConf := container.InitContainer()
-	defer mysql.CloseDatabaseConnection(containerConf.Mysqldb)
+	// defer mysql.CloseDatabaseConnection(containerConf.Mysqldb)
 
 	app := fiber.New()
 	app.Use(logger.New())
@@ -25,5 +24,7 @@ func main() {
 	rest.HTTPRouteInit(app, containerConf)
 
 	port := fmt.Sprintf("%s:%d", containerConf.Apps.Host, containerConf.Apps.HttpPort)
-	helper.Logger("main.go", helper.LoggerLevelFatal, app.Listen(port).Error())
+	if err := app.Listen(port); err != nil {
+		helper.Logger(helper.LoggerLevelFatal, "error", err)
+	}
 }

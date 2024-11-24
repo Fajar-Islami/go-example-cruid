@@ -14,8 +14,6 @@ import (
 	"gorm.io/gorm"
 )
 
-var currentfilepath = "internal/pkg/usecase/usecase.go"
-
 type BooksUseCase interface {
 	GetAllBooks(ctx context.Context, params booksmodel.BooksFilter) (res []booksmodel.BooksResp, err *helper.ErrorStruct)
 	GetBooksByID(ctx context.Context, booksid string) (res booksmodel.BooksResp, err *helper.ErrorStruct)
@@ -59,7 +57,7 @@ func (alc *BooksUseCaseImpl) GetAllBooks(ctx context.Context, params booksmodel.
 	}
 
 	if errRepo != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()))
+		helper.Logger(helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()), errRepo)
 		return res, &helper.ErrorStruct{
 			Code: fiber.StatusBadRequest,
 			Err:  errRepo,
@@ -87,7 +85,7 @@ func (alc *BooksUseCaseImpl) GetBooksByID(ctx context.Context, booksid string) (
 	}
 
 	if errRepo != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()))
+		helper.Logger(helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()), errRepo)
 		return res, &helper.ErrorStruct{
 			Code: fiber.StatusBadRequest,
 			Err:  errRepo,
@@ -118,7 +116,7 @@ func (alc *BooksUseCaseImpl) CreateBooks(ctx context.Context, data booksmodel.Bo
 		Author:      data.Author,
 	})
 	if errRepo != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()))
+		helper.Logger(helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()), errRepo)
 		return res, &helper.ErrorStruct{
 			Code: fiber.StatusBadRequest,
 			Err:  errRepo,
@@ -143,7 +141,7 @@ func (alc *BooksUseCaseImpl) UpdateBooksByID(ctx context.Context, booksid string
 	})
 
 	if errRepo != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()))
+		helper.Logger(helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()), errRepo)
 		return res, &helper.ErrorStruct{
 			Code: fiber.StatusBadRequest,
 			Err:  errRepo,
@@ -155,7 +153,7 @@ func (alc *BooksUseCaseImpl) UpdateBooksByID(ctx context.Context, booksid string
 func (alc *BooksUseCaseImpl) DeleteBooksByID(ctx context.Context, booksid string) (res string, err *helper.ErrorStruct) {
 	resRepo, errRepo := alc.booksrepository.DeleteBooksByID(ctx, booksid)
 	if errRepo != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()))
+		helper.Logger(helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()), errRepo)
 		return res, &helper.ErrorStruct{
 			Code: fiber.StatusBadRequest,
 			Err:  errRepo,

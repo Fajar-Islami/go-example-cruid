@@ -22,30 +22,30 @@ type MysqlConf struct {
 	MaxOpenConnections int    `mapstructure:"mysql_maxOpenConnections"`
 }
 
-const currentfilepath = "internal/infrastructure/mysql/mysql.go"
-
 func DatabaseInit(v *viper.Viper) *gorm.DB {
 	var mysqlConfig MysqlConf
 	err := v.Unmarshal(&mysqlConfig)
 	if err != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprintf("failed init database mysql : %s", err.Error()))
+		helper.Logger(helper.LoggerLevelPanic, fmt.Sprintf("failed init database mysql : %s", err.Error()), err)
 	}
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local", mysqlConfig.Username, mysqlConfig.Password, mysqlConfig.Host, mysqlConfig.Port, mysqlConfig.DbName)
 
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprintf("Cannot conenct to database : %s", err.Error()))
+		// helper.Logger(helper.LoggerLevelPanic, fmt.Sprintf("Cannot conenct to database : %s", err.Error()), err)
+		panic(err)
 	}
 
 	_, err = db.DB()
 	if err != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprintf("Cannot conenct to database : %s", err.Error()))
+		// helper.Logger(helper.LoggerLevelPanic, fmt.Sprintf("Cannot conenct to database : %s", err.Error()), err)
+		panic(err)
 	}
 
 	// TODO POOLING CONNECTION
 
-	helper.Logger(currentfilepath, helper.LoggerLevelInfo, "⇨ MySQL status is connected")
+	helper.Logger(helper.LoggerLevelInfo, "⇨ MySQL status is connected", nil)
 	RunMigration(db)
 
 	return db
@@ -54,7 +54,7 @@ func DatabaseInit(v *viper.Viper) *gorm.DB {
 func CloseDatabaseConnection(db *gorm.DB) {
 	dbSQL, err := db.DB()
 	if err != nil {
-		helper.Logger(currentfilepath, helper.LoggerLevelPanic, fmt.Sprintf("Failed to close connection to database : %s", err.Error()))
+		helper.Logger(helper.LoggerLevelPanic, fmt.Sprintf("Failed to close connection to database : %s", err.Error()), err)
 	}
 
 	dbSQL.Close()
