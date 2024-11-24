@@ -23,7 +23,7 @@ func NewUsersRepository(db *gorm.DB) UsersRepository {
 }
 
 func (r *UsersRepositoryImpl) GetUsersByEmail(ctx context.Context, email string) (res entity.User, err error) {
-	if err := r.db.First(&res).Where("email = ?", email).WithContext(ctx).Error; err != nil {
+	if err := r.db.Where("email = ?", email).First(&res).WithContext(ctx).Error; err != nil {
 		return res, err
 	}
 	return res, nil
