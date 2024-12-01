@@ -32,7 +32,7 @@ func (uc *AuthControllerImpl) Login(ctx *fiber.Ctx) error {
 		})
 	}
 
-	// @TODO IMRPOVE FORMAT RESPONSE
+	// TODO IMRPOVE FORMAT RESPONSE
 	res, err := uc.authUsc.Login(c, *data)
 	if err != nil {
 		return ctx.Status(err.Code).JSON(fiber.Map{
@@ -40,7 +40,7 @@ func (uc *AuthControllerImpl) Login(ctx *fiber.Ctx) error {
 		})
 	}
 
-	// @TODO IMRPOVE FORMAT RESPONSE
+	// TODO IMRPOVE FORMAT RESPONSE
 	return ctx.Status(fiber.StatusCreated).JSON(fiber.Map{
 		"data": res,
 	})
@@ -63,7 +63,7 @@ func (uc *AuthControllerImpl) Register(ctx *fiber.Ctx) error {
 		})
 	}
 
-	// @TODO IMRPOVE FORMAT RESPONSE
+	// TODO IMRPOVE FORMAT RESPONSE
 	return ctx.Status(fiber.StatusCreated).JSON(fiber.Map{
 		"data": res,
 	})

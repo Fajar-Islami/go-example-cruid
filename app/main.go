@@ -9,12 +9,9 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
-	"github.com/sirupsen/logrus"
 )
 
 func main() {
-	logrus.SetFormatter(&logrus.JSONFormatter{})
-
 	containerConf := container.InitContainer()
 	// defer mysql.CloseDatabaseConnection(containerConf.Mysqldb)
 

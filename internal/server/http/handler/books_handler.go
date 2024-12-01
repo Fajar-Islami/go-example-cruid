@@ -14,6 +14,6 @@ func BooksRoute(r fiber.Router, BooksUsc usecase.BooksUseCase) {
 	booksAPI.Get("", controller.GetAllBooks)
 	booksAPI.Get("/:id_books", controller.GetBooksByID)
 	booksAPI.Post("", MiddlewareAuth, controller.CreateBooks)
-	booksAPI.Put("/:id_books", controller.UpdateBooksByID)
-	booksAPI.Delete("/:id_books", controller.DeleteBooksByID)
+	booksAPI.Put("/:id_books", MiddlewareAuth, controller.UpdateBooksByID)
+	booksAPI.Delete("/:id_books", MiddlewareAuth, controller.DeleteBooksByID)
 }

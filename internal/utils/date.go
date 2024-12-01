@@ -1,3 +1,3 @@
 package utils
 
-// @TODO : make function parsing date
+// TODO : make function parsing date

@@ -1,7 +1,9 @@
 package controller
 
 import (
+	"fmt"
 	"log"
+	"strconv"
 	booksmodel "tugas_akhir_example/internal/pkg/model"
 	booksusecase "tugas_akhir_example/internal/pkg/usecase"
 
@@ -32,7 +34,7 @@ func (uc *BooksControllerImpl) GetAllBooks(ctx *fiber.Ctx) error {
 	filter := new(booksmodel.BooksFilter)
 	if err := ctx.QueryParser(filter); err != nil {
 		log.Println(err)
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err.Error(),
 		})
@@ -45,13 +47,13 @@ func (uc *BooksControllerImpl) GetAllBooks(ctx *fiber.Ctx) error {
 	})
 
 	if err != nil {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(err.Code).JSON(fiber.Map{
 			"error": err.Err.Error(),
 		})
 	}
 
-	// @TODO IMRPOVE FORMAT RESPONSE
+	// TODO IMRPOVE FORMAT RESPONSE
 	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
 		"data": res,
 	})
@@ -61,7 +63,7 @@ func (uc *BooksControllerImpl) GetBooksByID(ctx *fiber.Ctx) error {
 	c := ctx.Context()
 	booksid := ctx.Params("id_books")
 	if booksid == "" {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Bad request",
 		})
@@ -69,13 +71,13 @@ func (uc *BooksControllerImpl) GetBooksByID(ctx *fiber.Ctx) error {
 
 	res, err := uc.booksusecase.GetBooksByID(c, booksid)
 	if err != nil {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(err.Code).JSON(fiber.Map{
 			"error": err.Err.Error(),
 		})
 	}
 
-	// @TODO IMRPOVE FORMAT RESPONSE
+	// TODO IMRPOVE FORMAT RESPONSE
 	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
 		"data": res,
 	})
@@ -84,23 +86,32 @@ func (uc *BooksControllerImpl) GetBooksByID(ctx *fiber.Ctx) error {
 func (uc *BooksControllerImpl) CreateBooks(ctx *fiber.Ctx) error {
 	c := ctx.Context()
 
+	// cara baca context yang diset di middleware
+	id := ctx.Locals("userid").(string)
+	email := ctx.Locals("useremail").(string)
+
+	fmt.Println("id", id)
+	fmt.Println("email", email)
+
 	data := new(booksmodel.BooksReqCreate)
 	if err := ctx.BodyParser(data); err != nil {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err.Error(),
 		})
 	}
 
+	userid, _ := strconv.Atoi(id)
+	data.UserID = uint(userid)
 	res, err := uc.booksusecase.CreateBooks(c, *data)
 	if err != nil {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(err.Code).JSON(fiber.Map{
 			"error": err.Err.Error(),
 		})
 	}
 
-	// @TODO IMRPOVE FORMAT RESPONSE
+	// TODO IMRPOVE FORMAT RESPONSE
 	return ctx.Status(fiber.StatusCreated).JSON(fiber.Map{
 		"data": res,
 	})
@@ -110,7 +121,7 @@ func (uc *BooksControllerImpl) UpdateBooksByID(ctx *fiber.Ctx) error {
 	c := ctx.Context()
 	booksid := ctx.Params("id_books")
 	if booksid == "" {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Bad request",
 		})
@@ -118,7 +129,7 @@ func (uc *BooksControllerImpl) UpdateBooksByID(ctx *fiber.Ctx) error {
 
 	data := new(booksmodel.BooksReqUpdate)
 	if err := ctx.BodyParser(data); err != nil {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Bad request",
 		})
@@ -126,13 +137,13 @@ func (uc *BooksControllerImpl) UpdateBooksByID(ctx *fiber.Ctx) error {
 
 	res, err := uc.booksusecase.UpdateBooksByID(c, booksid, *data)
 	if err != nil {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(err.Code).JSON(fiber.Map{
 			"error": err.Err.Error(),
 		})
 	}
 
-	// @TODO IMRPOVE FORMAT RESPONSE
+	// TODO IMRPOVE FORMAT RESPONSE
 	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
 		"data": res,
 	})
@@ -142,7 +153,7 @@ func (uc *BooksControllerImpl) DeleteBooksByID(ctx *fiber.Ctx) error {
 	c := ctx.Context()
 	booksid := ctx.Params("id_books")
 	if booksid == "" {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": "Bad request",
 		})
@@ -150,13 +161,13 @@ func (uc *BooksControllerImpl) DeleteBooksByID(ctx *fiber.Ctx) error {
 
 	res, err := uc.booksusecase.DeleteBooksByID(c, booksid)
 	if err != nil {
-		// @TODO IMRPOVE FORMAT RESPONSE
+		// TODO IMRPOVE FORMAT RESPONSE
 		return ctx.Status(err.Code).JSON(fiber.Map{
 			"error": err.Err.Error(),
 		})
 	}
 
-	// @TODO IMRPOVE FORMAT RESPONSE
+	// TODO IMRPOVE FORMAT RESPONSE
 	return ctx.Status(fiber.StatusOK).JSON(fiber.Map{
 		"data": res,
 	})

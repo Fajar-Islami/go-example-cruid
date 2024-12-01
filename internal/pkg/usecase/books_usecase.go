@@ -114,6 +114,7 @@ func (alc *BooksUseCaseImpl) CreateBooks(ctx context.Context, data booksmodel.Bo
 		Title:       data.Title,
 		Description: data.Description,
 		Author:      data.Author,
+		UserID:      data.UserID,
 	})
 	if errRepo != nil {
 		helper.Logger(helper.LoggerLevelError, fmt.Sprintf("Error at GetAllBooks : %s", errRepo.Error()), errRepo)

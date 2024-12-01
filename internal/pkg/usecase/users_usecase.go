@@ -86,6 +86,8 @@ func (alc *UsersUseCaseImpl) CreateUsers(ctx context.Context, params usermodel.C
 		}
 	}
 
+	// TODO PENGECEKAN EMAIL SUDAH TERPAKAI ATAU BELUM
+
 	hashPass, errHash := utils.HashPassword(params.Password)
 	if errHash != nil {
 		log.Println(errHash)

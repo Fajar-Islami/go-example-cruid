@@ -56,7 +56,7 @@ func (r *BooksRepositoryImpl) GetBooksByID(ctx context.Context, booksid string) 
 }
 
 func (r *BooksRepositoryImpl) CreateBooks(ctx context.Context, data entity.Book) (res uint, err error) {
-	result := r.db.Create(&data).WithContext(ctx)
+	result := r.db.Debug().Create(&data).WithContext(ctx)
 	if result.Error != nil {
 		return res, result.Error
 	}
